@@ -3,6 +3,7 @@ import {SafeAreaView, Text, FlatList, ActivityIndicator} from 'react-native';
 import { useFetch } from '../../hooks/useFetch';
 import wait from 'waait';
 import { Loading, Error } from "../../components";
+import { MainItem } from './components';
 
 const API_URL = 'https://fakestoreapi.com/products'
 
@@ -15,15 +16,15 @@ function Main(props) {
     }
     if(error){
        return <Error />;
-
     }
+    const renderMain = ({item}) => <MainItem item={item} />
 
     return(
         <SafeAreaView>
             <FlatList 
                 data={data}
                 keyExtractor={(_,i) => i.toString()}
-                renderItem={({item}) => <Text>{item.title}</Text>}
+                renderItem={renderMain}
             />
         </SafeAreaView>
     );
