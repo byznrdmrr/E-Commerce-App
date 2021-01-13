@@ -14,7 +14,7 @@ function Router() {
             screenOptions={({route}) => ({
               tabBarIcon: ({focused, color}) =>
               generateIcon(focused, color, route),
-              //tabBarLabel: () => null,
+              tabBarLabel: () => null,
             })}
             tabBarOptions={{
               activeTintColor: 'tomato',
