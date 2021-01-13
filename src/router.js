@@ -1,10 +1,23 @@
 import React from 'react';
 import {NavigationContainer}  from '@react-navigation/native';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {createStackNavigator} from "@react-navigation/stack";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Main, Favorites, Cart  } from "./pages";
+import {Main, Favorites, Cart, Details  } from "./pages";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function MainStack() {
+  return(
+    <Stack.Navigator
+        screenOptions={{headerShown: false}}
+    >
+      <Stack.Screen name="MainScreen" component={Main}/>
+      <Stack.Screen name="DetailScreen" component={Details} />
+    </Stack.Navigator>
+  ); 
+}
 
 function Router() {
     return(
@@ -20,7 +33,7 @@ function Router() {
               activeTintColor: 'tomato',
               inactiveTintColor: 'gray',
             }}>
-                <Tab.Screen name="MainScreen" component={Main}/>
+                <Tab.Screen name="MainStack" component={MainStack}/>
                 <Tab.Screen name="FavoritesScreen" component={Favorites} />
                 <Tab.Screen name="CartScreen" component={Cart} />
             </Tab.Navigator>
@@ -34,7 +47,7 @@ function generateIcon(focused, color, route) {
     let iconName;
   
     switch (route.name) {
-      case 'MainScreen':
+      case 'MainStack':
         iconName = focused ? 'book-open' : 'book-open-outline';
         break;
       case 'FavoritesScreen':

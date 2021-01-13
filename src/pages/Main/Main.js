@@ -17,7 +17,7 @@ function Main(props) {
     if(error){
        return <Error />;
     }
-    const renderMain = ({item}) => <MainItem item={item} />
+    const renderMain = ({item}) => <MainItem item={item} onSelect={() => props.navigation.navigate('DetailScreen', {id: item.id})} />
 
     return(
         <SafeAreaView>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import wait from 'waait';
 
-export function useFetch(url) {
+export function useFetch(url, config) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ export function useFetch(url) {
         await wait (2000);
         setLoading(true)
         const  {data: serverData} = await axios
-        .get(url)
+        .get(url, config)
         .catch(() => {
             setLoading(false);
             setError(serverError);          

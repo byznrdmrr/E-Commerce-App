@@ -2,10 +2,9 @@ import React from 'react';
 import {View, TouchableWithoutFeedback, Text, Image} from 'react-native';
 import {main_items} from'./styles';
 
-export function MainItem({item}) {
+export function MainItem({item,onSelect}) {
     return (
-        <TouchableWithoutFeedback>
-
+        <TouchableWithoutFeedback onPress={onSelect}>
             <View style={main_items.container}>
                 <Image
                     style ={main_items.image}
