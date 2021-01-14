@@ -30,7 +30,7 @@ function Router() {
               tabBarLabel: () => null,
             })}
             tabBarOptions={{
-              activeTintColor: 'tomato',
+              activeTintColor: '#ff6347',
               inactiveTintColor: 'gray',
             }}>
                 <Tab.Screen name="MainStack" component={MainStack}/>

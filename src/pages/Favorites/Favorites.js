@@ -1,28 +1,10 @@
-// import React from 'react';
-// import {SafeAreaView, Text, View} from 'react-native';
-
-// function Favorites(props) {
-//     return(
-//         <SafeAreaView>
-//             <Text>Favorites</Text>
-//         </SafeAreaView>
-//     );
-// }
-// export {Favorites}
-
 import React, {useState, useEffect} from 'react';
 import axios from "axios"
-import {SafeAreaView, Text, View, FlatList} from 'react-native';
+import {SafeAreaView, FlatList} from 'react-native';
 import {FavoriteItem, Loading, Error} from '../../components';
 import {useFetch} from '../../hooks/useFetch';
-import {useSelector} from 'react-redux';
 
-function Favorites(props) {
-  // const favlist = useSelector((state) => state.favorites);
-
-  // const favlist = useFetch(
-  //   `https://fakestoreapi.com/products/category/jewelery`,
-  // );
+function Favorites() {
   const [favData, setFavData] = useState([]);
   const productData = useFetch(`https://fakestoreapi.com/products/1`);
 

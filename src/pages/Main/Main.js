@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, Text, FlatList, ActivityIndicator} from 'react-native';
+import {SafeAreaView, Text, FlatList} from 'react-native';
 import {useFetch} from '../../hooks/useFetch';
 import wait from 'waait';
 import {Loading, Error} from '../../components';
