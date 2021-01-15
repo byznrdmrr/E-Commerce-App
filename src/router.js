@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {createStackNavigator} from "@react-navigation/stack";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Main, Favorites, Cart, Details  } from "./pages";
+import MainProvider from './context/MainProvider';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ function MainStack() {
 
 function Router() {
     return(
+      <MainProvider>
         <NavigationContainer>
             <Tab.Navigator 
             initialRouteName="MainScreen"
@@ -38,7 +40,7 @@ function Router() {
                 <Tab.Screen name="CartScreen" component={Cart} />
             </Tab.Navigator>
         </NavigationContainer>
-
+      </MainProvider>     
     );
 }
 export default Router;
