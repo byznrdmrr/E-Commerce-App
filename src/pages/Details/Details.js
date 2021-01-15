@@ -1,35 +1,3 @@
-// import React from 'react';
-// import {SafeAreView, Text, FlatList, Image} from 'react-native';
-// import {Loading, Error} from '../../components';
-// import {DetailsItem} from './components';
-// import {useFetch} from '../../hooks/useFetch';
-
-// const API_URL = 'https://fakestoreapi.com/products/';
-
-// export function Details(props) {
-//   const {id} = props.route.params;
-//   console.log(id);
-
-//   const {data, loading, error} = useFetch(API_URL, {params: id});
-
-//   if (loading) {
-//     return <Loading />;
-//   }
-//   if (error) {
-//     return <Error />;
-//   }
-//   const renderDetails = ({item}) => <DetailsItem item={item} />;
-//   return (
-//     <SafeAreView>
-//       <FlatList
-//         keyExtractor={(_, i) => i.toString()}
-//         data={data}
-//         renderItem={renderDetails}
-//       />
-//     </SafeAreView>
-//   );
-// }
-
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {
@@ -46,11 +14,13 @@ import {useFetch} from '../../hooks/useFetch';
 import {ProductCard, AddToCart, Loading, Error} from '../../components';
 import {Product_style} from '../../styles/Pages';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux';
 
 function Details(props) {
-  const {id} = props.route.params
-  const [similarData, setSimilarData] = useState([]);
-  const productData = useFetch(`https://fakestoreapi.com/products/${id}`);
+  const productVal = props.route.params
+  const dispatch = useDispatch(); //reducer'ı tetikleyecek yapı
+  const [similarData, setSimilarData] = useState([]); 
+  const productData = useFetch(`https://fakestoreapi.com/products/${productVal.item.id}`);
 
   useEffect(() => {
     if (productData.data) {
@@ -66,7 +36,7 @@ function Details(props) {
 
   const renderSimilarProducts = ({item}) => (
     <View style={Product_style.productItem} >
-      <ProductCard style={Product_style.productItem} productItem={item} isAddToCartVisible={false} />
+      <ProductCard style={Product_style.productItem} productItem={item} isAddToCartVisible={false}  />
     </View>
   );
 
@@ -87,7 +57,7 @@ function Details(props) {
               source={{uri: productData.data.image}}
               style={Product_style.image}>
               <View>
-                <TouchableOpacity /* onPress={onLike} */>
+                <TouchableOpacity onPress={() => dispatch({type: 'ADD_TO_FAVORITE',  payload: {productVal}})}>
                   <Icon
                     style={{alignSelf: 'flex-end'}}
                     name="heart-outline"
@@ -105,7 +75,7 @@ function Details(props) {
             <View style={Product_style.contentContainer}>
               <Text style={Product_style.title}>{productData.data.title}</Text>
               <View style={Product_style.addToCart}>
-                <AddToCart itemPrice={productData.data.price} />
+                <AddToCart itemPrice={productData.data.price} onAddCart ={() => dispatch({type: 'ADD_TO_CART', payload: {productVal}})}  />
               </View>
               <View style={Product_style.categoryContainer}>
                 <Text style={Product_style.category}>Category: </Text>

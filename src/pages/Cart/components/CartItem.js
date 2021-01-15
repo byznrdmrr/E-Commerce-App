@@ -11,7 +11,7 @@ import {AddToCart} from '../../../components/AddToCart';
 import {Cart_item_style} from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export function CartItem({itemFavData, onLike}) {
+export function CartItem({itemFavData}) {
   return (
     <TouchableWithoutFeedback>
       <View style={Cart_item_style.container}>
@@ -25,7 +25,7 @@ export function CartItem({itemFavData, onLike}) {
         <View style={Cart_item_style.contentContainer}>
           <View style={Cart_item_style.contentInnerContainerFirst}>
             <Text style={Cart_item_style.title}>{itemFavData.title}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onDelete={() => dispatch({type: 'DELETE_FROM_CART', payload: {itemFavData}})}>
               <Icon
                 style={Cart_item_style.delete}
                 name="delete-forever"

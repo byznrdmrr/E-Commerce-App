@@ -4,39 +4,27 @@ import {SafeAreaView, FlatList} from 'react-native';
 import {Loading, Error} from '../../components';
 import {FavoriteItem} from "./components"
 import {useFetch} from '../../hooks/useFetch';
+import {useSelector} from 'react-redux';
 
 function Favorites() {
-  const [favData, setFavData] = useState([]);
-  const productData = useFetch(`https://fakestoreapi.com/products/1`);
-
-  useEffect(() => {
-    if (productData.data) {
-      axios
-        .get(
-          `https://fakestoreapi.com/products/category/${productData.data.category}`,
-        )
-        .then((res) => {
-          setFavData(res.data);
-        });
-    }
-  }, [productData.data]);
-
-  const renderSimilarProducts = ({item}) => (
+  const favList = useSelector((state)=> state.favorites)
+   
+  const renderFav = ({item}) => (
     <FavoriteItem itemFavData={item} />
   );
 
-  if (productData.loading) {
+  if (favList.loading) {
     return <Loading />;
   }
-  if (productData.error) {
+  if (favList.error) {
     return <Error />;
   }
 
   return (
     <SafeAreaView>
       <FlatList
-        data={favData}
-        renderItem={renderSimilarProducts}
+        data={favList}
+        renderItem={renderFav}
         keyExtractor={(item) => item.id.toString()}
       />
     </SafeAreaView>

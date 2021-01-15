@@ -11,6 +11,7 @@ function AddToCart({
   showButton = true,
   showQuantity = true,
   showPrice = true,
+  onAddCart,
 }) {
   const [count, setCount] = useState(1);
 
@@ -41,7 +42,7 @@ function AddToCart({
   return (
     <View style={Add_to_cart_style.container}>
       {showButton && (
-        <TouchableOpacity onPress={() => handleAddToCart()}>
+        <TouchableOpacity onPress={() => onAddCart()}>
           <Icon
             style={Add_to_cart_style.button}
             name="cart-plus"

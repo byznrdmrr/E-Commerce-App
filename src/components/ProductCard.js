@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {AddToCart} from '../components/AddToCart';
 import {Product_card_style} from '../styles/Components';
 
-function ProductCard({productItem, isAddToCartVisible = true}) {
+function ProductCard({productItem, isAddToCartVisible = true, }) {
   return (
     <View style={Product_card_style.productItem}>
       <Image

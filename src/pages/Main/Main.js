@@ -19,7 +19,7 @@ function Main(props) {
   const renderMain = ({item}) => (
     <MainItem
       item={item}
-      onSelect={() => props.navigation.navigate('DetailScreen', {id: item.id})}
+      onSelect={() => props.navigation.navigate('DetailScreen', {item: item})}
     />
   );
 

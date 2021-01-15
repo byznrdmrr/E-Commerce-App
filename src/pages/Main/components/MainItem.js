@@ -19,25 +19,12 @@ export function MainItem({item, onSelect}) {
           style={main_items.image}
           source={{uri: item.image}}
         />
-        <TouchableOpacity /* onPress={onLike} */ style={main_items.favButton}>
-          <Icon
-            style={{alignSelf: 'flex-end'}}
-            name="heart-outline"
-            color="red"
-            size={25}
-          />
-        </TouchableOpacity>
+
         <View style={main_items.productTextContentContainer}>
           <Text style={main_items.title}>{item.title}</Text>
           <View style={main_items.footer}>
             <Text style={main_items.price}>{item.price}</Text>
-            <View>
-              <AddToCart
-                itemPrice={item.price}
-                showPrice={false}
-                showQuantity={false}
-              />
-            </View>
+
           </View>
         </View>
       </View>
