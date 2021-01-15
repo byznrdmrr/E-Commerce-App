@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios"
 import {SafeAreaView, FlatList} from 'react-native';
-import {CartItem, Loading, Error} from '../../components';
+import {Loading, Error} from '../../components';
+import {CartItem} from "./components"
 import {useFetch} from '../../hooks/useFetch';
 
 function Cart() {
@@ -23,10 +24,6 @@ function Cart() {
   const renderSimilarProducts = ({item}) => (
     <CartItem itemFavData={item} />
   );
-
-  const test = (
-    productData.data /* && productData.data.map(item => item.price) */
-  )
 
   if (productData.loading) {
     return <Loading />;

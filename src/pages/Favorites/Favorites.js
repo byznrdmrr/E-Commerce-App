@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios"
 import {SafeAreaView, FlatList} from 'react-native';
-import {FavoriteItem, Loading, Error} from '../../components';
+import {Loading, Error} from '../../components';
+import {FavoriteItem} from "./components"
 import {useFetch} from '../../hooks/useFetch';
 
 function Favorites() {

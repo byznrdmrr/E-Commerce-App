@@ -7,8 +7,8 @@ import {
   Image,
 } from 'react-native';
 
-import {Favorite_card_style} from '../styles/Components';
-import {AddToCart} from './AddToCart';
+import {Favorite_card_style} from './styles';
+import {AddToCart} from '../../../components/AddToCart';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export function FavoriteItem({itemFavData, onLike}) {
