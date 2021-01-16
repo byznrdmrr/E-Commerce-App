@@ -55,9 +55,8 @@ function Details(props) {
   }
 
   const storeData = async (productVal) => {
-    const favData = `${productVal.data.title}`
-    await AsyncStorage.setItem('@FAVORITES', favData);
-    console.log(favData);
+    const jsonValue = JSON.stringify(productVal.data);
+    await AsyncStorage.setItem('@storage_Key', jsonValue);
     dispatch({type: 'ADD_TO_FAVORITE', payload: {productVal}});
   };
 

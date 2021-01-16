@@ -5,7 +5,16 @@ function reducer(state, action) {
       const index = state.favorites.findIndex(
         (fav) => fav.id === productVal.data.id,
       );
-
+      // var storedData;
+      // const getData = async () => {
+      //   const jsonValue = await AsyncStorage.getItem('@storage_Key');
+      //   if (jsonValue != null) {
+      //     storedData = JSON.parse(jsonValue);
+      //   } else {
+      //     null;
+      //   }
+      // };
+      // getData();
       return index === -1
         ? {...state, favorites: [...state.favorites, productVal.data]} //eski fav verilerini kaydet ve gönderilen itemlerı kaydet
         : state;
