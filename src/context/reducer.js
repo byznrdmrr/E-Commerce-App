@@ -23,10 +23,17 @@ function reducer(state, action) {
         : state;
 
     case 'DELETE_FROM_CART':
+      const {itemCartData} = action.payload;
+      return {
+        ...state,
+        cartsList: state.cartsList.filter((item) => item.id != itemCartData.id),
+      };
+
+    case 'DELETE_FROM_FAV':
       const {itemFavData} = action.payload;
       return {
         ...state,
-        cartsList: state.cartsList.filter((item) => item.id != itemFavData.id),
+        favorites: state.favorites.filter((item) => item.id != itemFavData.id),
       };
 
     default:

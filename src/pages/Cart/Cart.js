@@ -8,7 +8,7 @@ function Cart() {
   const cartsList = useSelector((state)=> state.cartsList)
 
   const renderCart = ({item}) => (
-    <CartItem itemFavData={item}/>
+    <CartItem itemCartData={item}/>
   );
 
   if (cartsList.loading) {

@@ -10,8 +10,11 @@ import {
 import {Favorite_card_style} from './styles';
 import {AddToCart} from '../../../components/AddToCart';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch } from 'react-redux';
 
-export function FavoriteItem({itemFavData, onLike}) {
+export function FavoriteItem({itemFavData}) {
+  const dispatch = useDispatch()
+
   return (
     <TouchableWithoutFeedback>
       <View style={Favorite_card_style.container}>
@@ -25,7 +28,7 @@ export function FavoriteItem({itemFavData, onLike}) {
         <View style={Favorite_card_style.contentContainer}>
           <View style={Favorite_card_style.contentInnerContainerFirst}>
             <Text style={Favorite_card_style.title}>{itemFavData.title}</Text>
-            <TouchableOpacity /* onPress={onLike} */>
+            <TouchableOpacity onPress={() => dispatch({type: 'DELETE_FROM_FAV', payload: {itemFavData}})} >
               <Icon
                 style={{alignSelf: 'flex-end', marginRight: 10}}
                 name="heart"

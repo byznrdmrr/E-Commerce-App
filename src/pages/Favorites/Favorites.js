@@ -19,7 +19,7 @@ function Favorites() {
   }
 
   const getData = async () => {
-    const value = await AsyncStorage.getItem('@TESTFORTEST2');
+    const value = await AsyncStorage.getItem('@FAVORITES');
     if (value !== null) {
       Alert.alert('data', value);
     }
@@ -32,6 +32,7 @@ function Favorites() {
         renderItem={renderFav}
         keyExtractor={(item) => item.id.toString()}
       />
+      <Button title="get data" onPress={getData} />
     </SafeAreaView>
   );
 }
