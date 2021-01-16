@@ -1,17 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import axios from "axios"
-import {SafeAreaView, FlatList} from 'react-native';
+import axios from 'axios';
+import {SafeAreaView, FlatList, Alert, Button} from 'react-native';
 import {Loading, Error} from '../../components';
-import {FavoriteItem} from "./components"
-import {useFetch} from '../../hooks/useFetch';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {FavoriteItem} from './components';
 import {useSelector} from 'react-redux';
 
 function Favorites() {
-  const favList = useSelector((state)=> state.favorites)
-   
-  const renderFav = ({item}) => (
-    <FavoriteItem itemFavData={item} />
-  );
+  const favList = useSelector((state) => state.favorites);
+
+  const renderFav = ({item}) => <FavoriteItem itemFavData={item} />;
 
   if (favList.loading) {
     return <Loading />;
@@ -19,6 +17,13 @@ function Favorites() {
   if (favList.error) {
     return <Error />;
   }
+
+  const getData = async () => {
+    const value = await AsyncStorage.getItem('@TESTFORTEST2');
+    if (value !== null) {
+      Alert.alert('data', value);
+    }
+  };
 
   return (
     <SafeAreaView>

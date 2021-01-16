@@ -3,11 +3,13 @@ function reducer(state, action) {
     case 'ADD_TO_FAVORITE':
       const {productVal} = action.payload;
       const index = state.favorites.findIndex(
-        (fav) => fav.id === productVal.item.id,
+        (fav) => fav.id === productVal.data.id,
       );
+
       return index === -1
-        ? {...state, favorites: [...state.favorites, productVal.item]} //eski fav verilerini kaydet ve gönderilen itemlerı kaydet
+        ? {...state, favorites: [...state.favorites, productVal.data]} //eski fav verilerini kaydet ve gönderilen itemlerı kaydet
         : state;
+
     case 'ADD_TO_CART':
       const productVal2 = action.payload;
       const index2 = state.cartsList.findIndex(
@@ -24,7 +26,7 @@ function reducer(state, action) {
       const {itemFavData} = action.payload;
       return {
         ...state,
-        cartsList: state.cartsList.filter(item => item.id != itemFavData.id),
+        cartsList: state.cartsList.filter((item) => item.id != itemFavData.id),
       };
 
     default:
