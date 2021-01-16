@@ -84,6 +84,7 @@ const Favorite_card_style = StyleSheet.create({
 const Add_to_cart_style = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    justifyContent: "space-between",
     marginLeft: 4,
   },
   button: {
@@ -93,34 +94,6 @@ const Add_to_cart_style = StyleSheet.create({
     borderRadius: 4,
     marginLeft: 4,
   },
-  quantityContainer: {
-    flexDirection: 'row',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#c1c1c1',
-    borderRadius: 4,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    marginLeft: 5,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  quantityButtons: {
-    borderRadius: 4,
-  },
-  quantityCount: {
-    marginHorizontal: 10,
-  },
-  priceAndQuantity: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginRight: 10,
-  },
-  countedPrice: {
-    color: "#03a9f4"
-  }
 });
 
 const Cart_item_style = StyleSheet.create({

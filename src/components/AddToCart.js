@@ -51,34 +51,6 @@ function AddToCart({
           />
         </TouchableOpacity>
       )}
-      <View style={Add_to_cart_style.priceAndQuantity}>
-        {showQuantity && (
-          <View style={Add_to_cart_style.quantityContainer}>
-            <TouchableOpacity onPress={() => handleChangeCountDecrease()}>
-              <Icon
-                style={Add_to_cart_style.quantityButtons}
-                name="minus"
-                color="black"
-                size={25}
-              />
-            </TouchableOpacity>
-            <Text style={Add_to_cart_style.quantityCount}>{count}</Text>
-            <TouchableOpacity onPress={() => handleChangeCountIncrease()}>
-              <Icon
-                style={Add_to_cart_style.quantityButtons}
-                name="plus"
-                color="black"
-                size={25}
-              />
-            </TouchableOpacity>
-          </View>
-        )}
-        {showPrice && (
-          <Text style={Add_to_cart_style.countedPrice}>
-            {count > 1 ? (itemPrice * count).toFixed(2) : itemPrice} $
-          </Text>
-        )}
-      </View>
     </View>
   );
 }
