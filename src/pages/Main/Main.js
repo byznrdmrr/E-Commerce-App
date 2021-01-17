@@ -80,6 +80,7 @@ function Main(props) {
       <View>
         <FlatList
           horizontal
+          showsHorizontalScrollIndicator={false}
           ListHeaderComponent={
             <TouchableOpacity onPress={() => allData()} style={styles.button}>
               <Text style={{color: '#fff'}}>All Products</Text>
@@ -119,8 +120,6 @@ const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
     justifyContent: 'space-around',
-    // marginTop: 20
-    // alignContent: 'center'
   },
   horizontal: {
     flexDirection: 'row',
