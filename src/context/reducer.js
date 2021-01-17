@@ -1,23 +1,42 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function reducer(state, action) {
   switch (action.type) {
     case 'ADD_TO_FAVORITE':
       const {productVal} = action.payload;
       const index = state.favorites.findIndex(
-        (fav) => fav.id === productVal.data.id,
+        (fav) => fav.id === productVal.item.id,
       );
-      // var storedData;
-      // const getData = async () => {
-      //   const jsonValue = await AsyncStorage.getItem('@storage_Key');
-      //   if (jsonValue != null) {
-      //     storedData = JSON.parse(jsonValue);
-      //   } else {
-      //     null;
-      //   }
-      // };
-      // getData();
+
+      const addStoreFav = async (productValAsync) => {
+        const localValue = await AsyncStorage.getItem('@storage_Key');
+        const bakeToJson = localValue && JSON.parse(localValue);
+
+        if (localValue != null && bakeToJson.length >= 1) {
+          const oldObject = bakeToJson.filter(
+            (item) => item.id === productValAsync.item.id,
+          );
+
+          if (oldObject.length === 0) {
+            const jsonValue = JSON.stringify([
+              ...bakeToJson,
+              productValAsync.item,
+            ]);
+            await AsyncStorage.setItem('@storage_Key', jsonValue);
+          }
+        } else {
+          const jsonValue = JSON.stringify([productValAsync.item]);
+          await AsyncStorage.setItem('@storage_Key', jsonValue);
+        }
+      };
+      addStoreFav(productVal);
+
       return index === -1
-        ? {...state, favorites: [...state.favorites, productVal.data]} //eski fav verilerini kaydet ve gönderilen itemlerı kaydet
-        : state;
+        ? {
+            ...state,
+            favorites: [...state.favorites, productVal.item],
+          }
+        : state; //eski fav verilerini kaydet ve gönderilen itemlerı kaydet
 
     case 'ADD_TO_CART':
       const productVal2 = action.payload;
@@ -40,10 +59,25 @@ function reducer(state, action) {
 
     case 'DELETE_FROM_FAV':
       const {itemFavData} = action.payload;
+
+      const deleteStoreFav = async () => {
+        const localValue = await AsyncStorage.getItem('@storage_Key');
+        const bakeToJson = localValue && JSON.parse(localValue);
+
+        if (localValue != null && bakeToJson) {
+          if (bakeToJson.length >= 1) {
+            const deletedFavs = JSON.stringify(
+              bakeToJson.filter((item) => item.id != itemFavData.id),
+            );
+            await AsyncStorage.setItem('@storage_Key', deletedFavs);
+          }
+        }
+      };
+      deleteStoreFav();
+
       return {
         ...state,
         favorites: state.favorites.filter((item) => item.id != itemFavData.id),
-        // savedFavorites: [...state.savedFavorites, productVal.data.id]
       };
 
     default:

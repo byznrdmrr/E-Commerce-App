@@ -23,7 +23,7 @@ export function MainItem({item, onSelect}) {
         <View style={main_items.productTextContentContainer}>
           <Text style={main_items.title}>{item.title}</Text>
           <View style={main_items.footer}>
-            <Text style={main_items.price}>{item.price}</Text>
+            <Text style={main_items.price}>{item.price} $</Text>
 
           </View>
         </View>

@@ -54,12 +54,6 @@ function Details(props) {
     return <Error />;
   }
 
-  const storeData = async (productVal) => {
-    const jsonValue = JSON.stringify(productVal.data);
-    await AsyncStorage.setItem('@storage_Key', jsonValue);
-    dispatch({type: 'ADD_TO_FAVORITE', payload: {productVal}});
-  };
-
   return (
     <SafeAreaView style={Product_style.container}>
       <ScrollView>
@@ -70,7 +64,7 @@ function Details(props) {
               source={{uri: productData.data.image}}
               style={Product_style.image}>
               <View>
-                <TouchableOpacity onPress={() => storeData(productData)}>
+                <TouchableOpacity onPress={() => dispatch({type: 'ADD_TO_FAVORITE', payload: {productVal}})}>
                   <Icon
                     style={{alignSelf: 'flex-end'}}
                     name="heart-outline"

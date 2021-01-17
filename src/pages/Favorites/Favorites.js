@@ -8,10 +8,8 @@ import {useSelector} from 'react-redux';
 import {useFetch} from '../../hooks/useFetch';
 
 function Favorites() {
-  const [localData, setLocalData] = useState();
-  const [newData, setNewDate] = useState();
+  const [localData, setLocalData] = useState([]);
   const favList = useSelector((state) => state.favorites);
-  const allProducts = useFetch(`https://fakestoreapi.com/products`);
   const renderFav = ({item}) => <FavoriteItem itemFavData={item} />;
 
   if (favList) {
@@ -23,36 +21,24 @@ function Favorites() {
     }
   }
 
-  if (allProducts.length > 0) {
-    if (allProducts.loading) {
-      return <Loading />;
-    }
-    if (allProducts.error) {
-      return <Error />;
-    }
-  }
-
   const getStorageData = async () => {
     const jsonValue = await AsyncStorage.getItem('@storage_Key');
     if (jsonValue != null) {
-      setLocalData(jsonValue);
+      const bakeToJason = JSON.parse([jsonValue]);
+      setLocalData(bakeToJason);
     } else {
-      null;
+      <Error />
     }
   };
 
-  getStorageData();
-
-  useEffect(() => {
-    if (allProducts.data) {
-      setNewDate(allProducts.data.filter((item) => item.id == localData));
-    }
-  }, [allProducts.data]);
+  // useEffect(() => {
+    getStorageData();
+  // }, []);
 
   return (
     <SafeAreaView>
       <FlatList
-        data={newData}
+        data={localData && localData}
         renderItem={renderFav}
         keyExtractor={(item) => item.id.toString()}
       />
