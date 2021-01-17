@@ -43,6 +43,7 @@ function reducer(state, action) {
       return {
         ...state,
         favorites: state.favorites.filter((item) => item.id != itemFavData.id),
+        // savedFavorites: [...state.savedFavorites, productVal.data.id]
       };
 
     default:

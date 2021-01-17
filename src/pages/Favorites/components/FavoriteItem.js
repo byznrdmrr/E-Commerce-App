@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import {Favorite_card_style} from './styles';
-import {AddToCart} from '../../../components/AddToCart';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch } from 'react-redux';
 
@@ -38,15 +37,7 @@ export function FavoriteItem({itemFavData}) {
             </TouchableOpacity>
           </View>
           <View style={Favorite_card_style.contentInnerContainerSecond}>
-            <Text style={Favorite_card_style.price}>{itemFavData.price}</Text>
-            <View>
-              <AddToCart
-                style={Favorite_card_style.addToCart}
-                itemPrice={itemFavData.price}
-                showPrice={false}
-                showQuantity={false}
-              />
-            </View>
+            <Text style={Favorite_card_style.price}>{itemFavData.price} $</Text>
           </View>
         </View>
       </View>

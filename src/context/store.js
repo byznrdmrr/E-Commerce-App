@@ -1,6 +1,6 @@
 const initialState = {
     favorites: [],
-    cartsList: []
-
+    cartsList: [],
+    savedFavorites: []
 };
 export default initialState;
