@@ -66,7 +66,7 @@ function Main(props) {
   };
 
   function ListHeader() {
-    const renderCategories = ({item}) => (
+    const renderCategories = ({item}) => (  
       <>
         <TouchableOpacity
           onPress={() => filterProductsByCategory(item)}

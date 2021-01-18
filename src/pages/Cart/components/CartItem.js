@@ -28,6 +28,7 @@ export function CartItem({itemCartData}) {
         <View style={Cart_item_style.contentContainer}>
           <View style={Cart_item_style.contentInnerContainerFirst}>
             <Text style={Cart_item_style.title}>{itemCartData.title}</Text>
+            
             <TouchableOpacity onPress={() => dispatch({type: 'DELETE_FROM_CART', payload: {itemCartData}})}>
               <Icon
                 style={Cart_item_style.delete}
@@ -39,6 +40,7 @@ export function CartItem({itemCartData}) {
           </View>
           <View style={Cart_item_style.priceContainer}>
             <AddToCart itemPrice={itemCartData.price} showButton={false} />
+            <Text style={{color: '#03a9f4'}}>{itemCartData.price}$</Text>
           </View>
         </View>
       </View>

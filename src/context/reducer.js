@@ -43,6 +43,30 @@ function reducer(state, action) {
       const index2 = state.cartsList.findIndex(
         (fav) => fav.id === productVal2.productVal.item.id,
       );
+
+      const addStoreCart = async (productValAsync) => {
+        const localValue = await AsyncStorage.getItem('@storage_Cart');
+        const bakeToJson = localValue && JSON.parse(localValue);
+
+        if (localValue != null && bakeToJson.length >= 1) {
+          const oldObject = bakeToJson.filter(
+            (item) => item.id === productValAsync.item.id,
+          );
+
+          if (oldObject.length === 0) {
+            const jsonValue = JSON.stringify([
+              ...bakeToJson,
+              productValAsync.item,
+            ]);
+            await AsyncStorage.setItem('@storage_Cart', jsonValue);
+          }
+        } else {
+          const jsonValue = JSON.stringify([productValAsync.item]);
+          await AsyncStorage.setItem('@storage_Cart', jsonValue);
+        }
+      };
+      addStoreCart(productVal2.productVal);
+
       return index2 === -1
         ? {
             ...state,
@@ -52,6 +76,22 @@ function reducer(state, action) {
 
     case 'DELETE_FROM_CART':
       const {itemCartData} = action.payload;
+
+      const deleteStoreCart = async () => {
+        const localValue = await AsyncStorage.getItem('@storage_Cart');
+        const bakeToJson = localValue && JSON.parse(localValue);
+
+        if (localValue != null && bakeToJson) {
+          if (bakeToJson.length >= 1) {
+            const deletedFavs = JSON.stringify(
+              bakeToJson.filter((item) => item.id != itemCartData.id),
+            );
+            await AsyncStorage.setItem('@storage_Cart', deletedFavs);
+          }
+        }
+      };
+      deleteStoreCart();
+
       return {
         ...state,
         cartsList: state.cartsList.filter((item) => item.id != itemCartData.id),

@@ -30,10 +30,8 @@ function Favorites() {
       <Error />
     }
   };
-
-  // useEffect(() => {
+  
     getStorageData();
-  // }, []);
 
   return (
     <SafeAreaView>
