@@ -18,8 +18,8 @@ Benzer şekilde favoriye eklenen ürünlerde cihazın belleğine kaydedilmesi ge
 - İş bölümü yapılmasında ve bunun için mevcut reponun Project kısmının kullanılmasında fayda var. (Template kısmından "Basic Kanban" seçebilirsiniz.).
 - İş parçacıkları ve görev dağılımı tamamiyle sizin insiyatifinize kalmış.
 - Tamamlanan projenin ekran görüntülerini mutlaka bu README üzerinden eklemeyi unutmayın. -->
-![](Images/Products_List.png)
-![](Images/Favorites.png)
-![](images/Cart.png)
-![](Images/Product_Details.png)
-![](Images/History.png)
+![](Images/Products_List.png);
+![](Images/Favorites.png);
+![](images/Cart.png);
+![](Images/Product_Details.png);
+![](Images/History.png);
