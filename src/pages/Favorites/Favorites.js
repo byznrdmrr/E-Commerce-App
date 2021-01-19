@@ -27,11 +27,11 @@ function Favorites() {
       const bakeToJason = JSON.parse([jsonValue]);
       setLocalData(bakeToJason);
     } else {
-      <Error />
+      <Error />;
     }
   };
-  
-    getStorageData();
+
+  getStorageData();
 
   return (
     <SafeAreaView>

@@ -53,6 +53,7 @@ function Details(props) {
   if (productData.error) {
     return <Error />;
   }
+  
 
   return (
     <SafeAreaView style={Product_style.container}>
