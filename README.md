@@ -1,4 +1,4 @@
-# Alışveriş Uygulaması
+<!-- # Alışveriş Uygulaması
 
 Kullanıcıların ürün satın alabildiği bir uygulamaya ihtiyaç bulunmaktadır.<br />
 
@@ -17,4 +17,9 @@ Benzer şekilde favoriye eklenen ürünlerde cihazın belleğine kaydedilmesi ge
 - Uygulamada custom component yapısı ve custom hook yapısına dikkat edilmeli.
 - İş bölümü yapılmasında ve bunun için mevcut reponun Project kısmının kullanılmasında fayda var. (Template kısmından "Basic Kanban" seçebilirsiniz.).
 - İş parçacıkları ve görev dağılımı tamamiyle sizin insiyatifinize kalmış.
-- Tamamlanan projenin ekran görüntülerini mutlaka bu README üzerinden eklemeyi unutmayın.
+- Tamamlanan projenin ekran görüntülerini mutlaka bu README üzerinden eklemeyi unutmayın. -->
+![](Images/Products_List.png)
+![](Images/Favorites.png)
+![](images/Cart.png)
+![](Images/Product_Details.png)
+![](Images/History.png)
